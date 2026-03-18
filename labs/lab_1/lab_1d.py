@@ -21,20 +21,18 @@ def two_sum(nums: list[int], target: int) -> list[int]:
         list[int]: Indices of the two numbers that add up to the target.
     """
 
-    num_to_index = {}
-    for index, num in enumerate(nums):
-        complement = target + num
-        if complement in num_to_index:
-            return [num_to_index[complement], index]
-        num_to_index[num] = index
-    return []  # In case there is no solution, though the problem guarantees one exists.
+    for a in range(len(nums)):
+        for b in range(len(nums)):
+            if target == nums[a] + nums[b]:
+                return [a, b]
+    return []
 
 # Example usage:
 def main():
     nums = [2, 7, 11, 15]
     target = 9
     result = two_sum(nums, target)
-    print(f"Indices of the two numbers that add up to {target}: {result}")
+    print(f"Indices of the two numbers that add up to {target}: {result[0], result[1]}")
 
 if __name__ == "__main__":
     main()
